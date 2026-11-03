@@ -1,7 +1,7 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Locale } from '@/types';
+import { createContext, useContext, useCallback, useSyncExternalStore, ReactNode } from 'react';
+import type { Locale } from '@/types';
 
 interface LanguageContextType {
   locale: Locale;
@@ -13,36 +13,54 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 const STORAGE_KEY = 'portfolio-locale';
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>('pt');
-  const [mounted, setMounted] = useState(false);
+let memoryLocale: Locale = 'pt';
+const listeners = new Set<() => void>();
 
-  useEffect(() => {
-    setMounted(true);
-    const stored = localStorage.getItem(STORAGE_KEY) as Locale | null;
-    if (stored && (stored === 'pt' || stored === 'en')) {
-      setLocaleState(stored);
+function subscribe(callback: () => void) {
+  listeners.add(callback);
+  const handleStorage = (e: StorageEvent) => {
+    if (e.key === STORAGE_KEY && (e.newValue === 'pt' || e.newValue === 'en')) {
+      memoryLocale = e.newValue;
+      callback();
     }
+  };
+  window.addEventListener('storage', handleStorage);
+  return () => {
+    listeners.delete(callback);
+    window.removeEventListener('storage', handleStorage);
+  };
+}
+
+function getClientSnapshot(): Locale {
+  if (typeof window !== 'undefined') {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === 'pt' || stored === 'en') {
+      memoryLocale = stored;
+    }
+  }
+  return memoryLocale;
+}
+
+function getServerSnapshot(): Locale {
+  return 'pt';
+}
+
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const locale = useSyncExternalStore(subscribe, getClientSnapshot, getServerSnapshot);
+
+  const setLocale = useCallback((newLocale: Locale) => {
+    memoryLocale = newLocale;
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(STORAGE_KEY, newLocale);
+      document.documentElement.lang = newLocale;
+    }
+    listeners.forEach((listener) => listener());
   }, []);
 
-  const setLocale = (newLocale: Locale) => {
-    setLocaleState(newLocale);
-    localStorage.setItem(STORAGE_KEY, newLocale);
-    document.documentElement.lang = newLocale;
-  };
-
-  const toggleLocale = () => {
-    setLocale(locale === 'pt' ? 'en' : 'pt');
-  };
-
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return (
-      <LanguageContext.Provider value={{ locale: 'pt', setLocale, toggleLocale }}>
-        {children}
-      </LanguageContext.Provider>
-    );
-  }
+  const toggleLocale = useCallback(() => {
+    const next = memoryLocale === 'pt' ? 'en' : 'pt';
+    setLocale(next);
+  }, [setLocale]);
 
   return (
     <LanguageContext.Provider value={{ locale, setLocale, toggleLocale }}>

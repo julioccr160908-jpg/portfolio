@@ -24,3 +24,4 @@ export const technologies: Technology[] = [
   { name: 'GitHub', icon: 'github', category: 'tools' },
   { name: 'Pytest', icon: 'pytest', category: 'tools' },
 ];
+

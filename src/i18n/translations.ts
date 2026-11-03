@@ -161,7 +161,7 @@ export const translations = {
 // ============================================================================
 
 export function t(localizedString: LocalizedString, locale: Locale): string {
-  return localizedString[locale];
+  return localizedString[locale] || localizedString.pt || '';
 }
 
 // ============================================================================
@@ -169,3 +169,4 @@ export function t(localizedString: LocalizedString, locale: Locale): string {
 // ============================================================================
 
 export type TranslationKey = keyof typeof translations;
+

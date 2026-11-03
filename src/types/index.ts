@@ -15,7 +15,7 @@ export interface LocalizedContent {
 }
 
 // ============================================================================
-// Project Types
+// Project Types & Discriminated Demo Union
 // ============================================================================
 
 export type ProjectCategory = 
@@ -25,17 +25,55 @@ export type ProjectCategory =
   | 'backend-api'
   | 'automation';
 
-export type DemoType = 'iframe' | 'component' | 'simulation' | 'gallery';
+/**
+ * Registry of interactive demonstration components
+ */
+export type RegisteredDemoComponent = 
+  | 'FleetManagementDemo' 
+  | 'WhatsAppAutomationDemo';
 
-export interface ProjectDemo {
-  type: DemoType;
-  /** URL for iframe demos */
-  url?: string;
-  /** Component name for interactive demos */
-  component?: string;
-  /** Gallery images */
-  images?: ProjectImage[];
+export interface IframeDemo {
+  type: 'iframe';
+  url: string;
+  allowFullscreen?: boolean;
 }
+
+export interface ComponentDemo {
+  type: 'component';
+  component: RegisteredDemoComponent;
+}
+
+export interface SimulationDemo {
+  type: 'simulation';
+  component: RegisteredDemoComponent;
+  initialStep?: number;
+}
+
+export interface GalleryDemoConfig {
+  type: 'gallery';
+  images: ProjectImage[];
+}
+
+export interface NoneDemo {
+  type: 'none';
+}
+
+/**
+ * Discriminated union for project demonstrations ensuring valid type configurations:
+ * - iframe: requires url
+ * - component: requires registered component
+ * - simulation: requires registered component & optional initial step
+ * - gallery: requires array of images
+ * - none: represents projects without interactive demos
+ */
+export type ProjectDemo = 
+  | IframeDemo 
+  | ComponentDemo 
+  | SimulationDemo 
+  | GalleryDemoConfig 
+  | NoneDemo;
+
+export type DemoType = ProjectDemo['type'];
 
 export interface ProjectImage {
   src: string;
@@ -80,6 +118,7 @@ export interface Project {
   shortDescription: LocalizedString;
   coverImage: string;
   technologies: string[];
+  services?: string[];
   demo: ProjectDemo;
   links: ProjectLink;
   caseStudy: ProjectCaseStudy;

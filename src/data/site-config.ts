@@ -6,21 +6,21 @@
 import { SiteConfig } from '@/types';
 
 export const siteConfig: SiteConfig = {
-  name: 'Julio',
+  name: 'Julio Carneiro',
   title: {
-    pt: 'Julio — Full Stack Developer',
-    en: 'Julio — Full Stack Developer',
+    pt: 'Julio Carneiro — Full Stack Developer',
+    en: 'Julio Carneiro — Full Stack Developer',
   },
   description: {
-    pt: 'Desenvolvedor Full Stack especializado em aplicações web, sistemas personalizados, APIs e automações.',
-    en: 'Full Stack Developer specialized in web applications, custom systems, APIs and automations.',
+    pt: 'Desenvolvedor Full Stack especializado em aplicações web, sistemas personalizados, Python Backend, APIs e automações empresariais.',
+    en: 'Full Stack Developer specialized in web applications, custom systems, Python Backend, APIs and business automations.',
   },
   available: true,
   contact: {
-    whatsapp: '', // Configure: seu número com código do país, ex: '5511999999999'
-    email: '', // Configure: seu e-mail
-    github: '', // Configure: seu username do GitHub
-    linkedin: '', // Configure: seu username do LinkedIn
+    whatsapp: '5564999032384',
+    email: '',
+    github: 'julioccr160908-jpg',
+    linkedin: 'julio-carneiro-dev',
   },
-  profileImage: '', // Configure: caminho para sua foto de perfil em /public
+  profileImage: '/images/profile.jpg',
 };

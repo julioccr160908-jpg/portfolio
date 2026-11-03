@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgClinica" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141416"/>
+      <stop offset="50%" stop-color="#1A181C"/>
+      <stop offset="100%" stop-color="#0E0D10"/>
+    </linearGradient>
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2B774"/>
+      <stop offset="100%" stop-color="#C59B58"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bgClinica)"/>
+  
+  <!-- Subtle ambient glow -->
+  <circle cx="680" cy="120" r="240" fill="#E2B774" opacity="0.06"/>
+  <circle cx="150" cy="400" r="200" fill="#F43F5E" opacity="0.04"/>
+
+  <!-- Border Card Frame -->
+  <rect x="40" y="40" width="720" height="420" rx="20" fill="#121114" stroke="#27272A" stroke-width="1.5"/>
+
+  <!-- Brand Sparkle Icon -->
+  <g transform="translate(80, 85)">
+    <circle cx="24" cy="24" r="24" fill="#E2B774" opacity="0.12"/>
+    <path d="M24 10 L26 20 L36 22 L26 24 L24 34 L22 24 L12 22 L22 20 Z" fill="#E2B774"/>
+  </g>
+
+  <!-- Tag -->
+  <rect x="140" y="93" width="170" height="28" rx="14" fill="#241E18" stroke="#E2B774" stroke-opacity="0.3"/>
+  <text x="155" y="112" fill="#E2B774" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" letter-spacing="1">ESTÉTICA PREMIUM</text>
+
+  <!-- Title & Real Headings -->
+  <text x="80" y="180" fill="#FAFAFA" font-family="Georgia, serif" font-weight="600" font-size="36" letter-spacing="-0.5">Clínica Estética Roan</text>
+  <text x="80" y="215" fill="#E2B774" font-family="Georgia, serif" font-style="italic" font-size="20">Harmonização, Rejuvenescimento e Bem-Estar</text>
+
+  <text x="80" y="270" fill="#A1A1AA" font-family="system-ui, -apple-system, sans-serif" font-size="14">Landing page de alto padrão desenvolvida com Next.js e Tailwind CSS.</text>
+  <text x="80" y="295" fill="#A1A1AA" font-family="system-ui, -apple-system, sans-serif" font-size="14">Apresentação editorial de tratamentos e integração direta com WhatsApp.</text>
+
+  <!-- Procedures Tags -->
+  <g transform="translate(80, 340)">
+    <rect x="0" y="0" width="140" height="32" rx="8" fill="#18181B" stroke="#27272A"/>
+    <text x="16" y="21" fill="#FAFAFA" font-family="monospace" font-size="11">Harmonização</text>
+
+    <rect x="150" y="0" width="120" height="32" rx="8" fill="#18181B" stroke="#27272A"/>
+    <text x="166" y="21" fill="#FAFAFA" font-family="monospace" font-size="11">Botox Premium</text>
+
+    <rect x="280" y="0" width="130" height="32" rx="8" fill="#18181B" stroke="#27272A"/>
+    <text x="296" y="21" fill="#FAFAFA" font-family="monospace" font-size="11">Peeling Facial</text>
+  </g>
+
+  <!-- Production URL badge -->
+  <g transform="translate(80, 405)">
+    <circle cx="6" cy="6" r="4" fill="#34D399"/>
+    <text x="18" y="10" fill="#34D399" font-family="monospace" font-size="11">clinica-estetica-roan.vercel.app</text>
+  </g>
+</svg>

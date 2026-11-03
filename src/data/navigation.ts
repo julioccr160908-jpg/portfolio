@@ -20,3 +20,4 @@ export const categoryFilters: CategoryFilter[] = [
   { value: 'backend-api', label: { pt: 'Backend / APIs', en: 'Backend / APIs' } },
   { value: 'automation', label: { pt: 'Automações', en: 'Automations' } },
 ];
+
