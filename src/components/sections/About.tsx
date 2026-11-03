@@ -47,7 +47,7 @@ export default function About() {
                     alt={siteConfig.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 384px"
-                    className="object-cover object-top transition duration-500 group-hover:scale-105"
+                    className="object-cover object-[center_30%] transition duration-500 group-hover:scale-105"
                     priority
                   />
                 ) : (

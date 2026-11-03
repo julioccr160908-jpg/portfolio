@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useLanguage } from '@/i18n';
 import { t, translations } from '@/i18n/translations';
 import { siteConfig } from '@/data/site-config';
@@ -205,10 +206,18 @@ export default function Hero() {
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           {/* Left side: Text content */}
           <div className="space-y-6 sm:space-y-8 min-w-0">
-            {/* Role badge */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#3B82F6]/20 bg-[#3B82F6]/10 px-4 py-1.5">
-              <div className="h-1.5 w-1.5 rounded-full bg-[#3B82F6]" />
-              <span className="text-xs font-semibold tracking-widest text-[#3B82F6]">
+            {/* Role badge with profile photo */}
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-[#27272A] bg-[#111114] p-1.5 pr-4 shadow-md">
+              <div className="relative h-7 w-7 overflow-hidden rounded-full border border-[#3B82F6]/60">
+                <Image
+                  src={siteConfig.profileImage || '/images/profile.jpg'}
+                  alt={siteConfig.name}
+                  fill
+                  sizes="28px"
+                  className="object-cover object-[center_30%]"
+                />
+              </div>
+              <span className="text-xs font-semibold tracking-wider text-[#3B82F6]">
                 {t(translations.hero.role, locale)}
               </span>
             </div>
