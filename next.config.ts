@@ -1,20 +1,25 @@
 import type { NextConfig } from "next";
 
+// Content Security Policy calibrated for Next.js App Router, Framer Motion animations & Google Fonts
 const cspHeader = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline';
-  style-src 'self' 'unsafe-inline';
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  style-src-attr 'self' 'unsafe-inline';
+  style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com;
   img-src 'self' data: blob: https:;
-  font-src 'self' data:;
-  frame-src 'self' https://barberhost.com.br https://clinica-estetica-roan.vercel.app https://landingpage-clinica.vercel.app https://landingpage-celula.vercel.app;
-  connect-src 'self';
+  font-src 'self' data: https://fonts.gstatic.com;
+  connect-src 'self' https:;
+  worker-src 'self' blob:;
+  child-src 'self' blob:;
+  object-src 'none';
+  base-uri 'self';
   frame-ancestors 'self';
 `.replace(/\s{2,}/g, ' ').trim();
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  cacheComponents: true,
-  partialPrefetching: true,
+  reactStrictMode: true,
   turbopack: {
     rules: {
       "*.css": {

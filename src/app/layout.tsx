@@ -1,130 +1,102 @@
-import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import ClientProviders from '@/components/providers/ClientProviders';
-import './globals.css';
+import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import "./globals.css";
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
-const baseUrl = 'https://juliocarneiro.dev';
+export const viewport: Viewport = {
+  themeColor: "#09090B",
+  colorScheme: "dark",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL("https://juliocarneiro.dev"),
   title: {
-    default: 'Julio Carneiro — Full Stack Developer | Python, Web & Automações',
-    template: '%s | Julio Carneiro',
+    default: "Júlio Carneiro — Desenvolvedor Web & Engenheiro Frontend",
+    template: "%s | Júlio Carneiro",
   },
   description:
-    'Portfólio profissional de Julio Carneiro. Desenvolvedor Full Stack especializado em Python Backend, APIs RESTful, Sistemas Personalizados, Banco de Dados SQL e Automações Empresariais com demonstrações interativas.',
+    "Desenvolvedor Web e Engenheiro Frontend focado em landing pages de alta conversão, interfaces rápidas e aplicações modernas com código limpo.",
   keywords: [
-    'Julio Carneiro',
-    'Full Stack Developer',
-    'Desenvolvedor Full Stack',
-    'Python Backend',
-    'FastAPI',
-    'Bancos de Dados SQL',
-    'MySQL',
-    'Automações Empresariais',
-    'WhatsApp API',
-    'Next.js',
-    'React',
-    'TypeScript',
+    "Júlio Carneiro",
+    "Desenvolvedor Web",
+    "Engenheiro Frontend",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Landing Pages",
+    "Alta Conversão",
+    "Framer Motion",
+    "UI/UX Editorial",
   ],
-  authors: [{ name: 'Julio Carneiro', url: baseUrl }],
-  creator: 'Julio Carneiro',
-  alternates: {
-    canonical: '/',
-    languages: {
-      'pt-BR': '/',
-      'en-US': '/?lang=en',
-    },
-  },
-  openGraph: {
-    title: 'Julio Carneiro — Full Stack Developer',
-    description:
-      'Construindo soluções digitais que conectam ideias e tecnologia. Aplicações web, sistemas personalizados e automações.',
-    url: baseUrl,
-    siteName: 'Julio Carneiro Portfolio',
-    locale: 'pt_BR',
-    type: 'website',
-    images: [
-      {
-        url: '/images/projects/barberhost-cover.svg',
-        width: 1200,
-        height: 630,
-        alt: 'Julio Carneiro — Full Stack Developer Portfolio',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Julio Carneiro — Full Stack Developer',
-    description:
-      'Desenvolvedor Full Stack especializado em Python Backend, APIs RESTful, Sistemas Web e Automações.',
-    images: ['/images/projects/barberhost-cover.svg'],
-  },
+  authors: [{ name: "Júlio Carneiro", url: "https://github.com/julioccr160908-jpg" }],
+  creator: "Júlio Carneiro",
+  publisher: "Júlio Carneiro",
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
-};
-
-const jsonLdPerson = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Julio Carneiro',
-  jobTitle: 'Full Stack Developer',
-  url: baseUrl,
-  sameAs: [
-    'https://github.com/julioccr160908-jpg',
-    'https://www.linkedin.com/in/julio-carneiro-dev/',
-  ],
-  knowsAbout: [
-    'Web Development',
-    'Python',
-    'FastAPI',
-    'SQL',
-    'MySQL',
-    'REST APIs',
-    'Process Automation',
-    'Next.js',
-    'React',
-    'TypeScript',
-  ],
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "https://juliocarneiro.dev",
+    siteName: "Júlio Carneiro — Portfólio",
+    title: "Júlio Carneiro — Desenvolvedor Web & Engenheiro Frontend",
+    description:
+      "Landing pages de alta conversão, interfaces ultra-rápidas e aplicações sob medida com estética editorial e engenharia sólida.",
+    images: [
+      {
+        url: "/projects/jucarneiro-desktop.png",
+        width: 1440,
+        height: 900,
+        alt: "Júlio Carneiro — Engenheiro Frontend e Desenvolvedor Web",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Júlio Carneiro — Desenvolvedor Web & Engenheiro Frontend",
+    description:
+      "Landing pages de alta conversão, interfaces rápidas e aplicações web sob medida.",
+    images: ["/projects/jucarneiro-desktop.png"],
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html
-      lang="pt"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
-    >
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPerson) }}
-        />
-      </head>
-      <body className="min-h-full flex flex-col bg-[#09090B] text-[#FAFAFA]">
-        <ClientProviders>{children}</ClientProviders>
+    <html lang="pt-BR" className={`dark ${plusJakartaSans.variable} ${jetbrainsMono.variable}`}>
+      <body className="bg-background text-foreground antialiased selection:bg-emerald-500/20 selection:text-emerald-300 overflow-x-clip">
+        {children}
       </body>
     </html>
   );

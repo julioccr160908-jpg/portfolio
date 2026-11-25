@@ -1,27 +1,28 @@
-import Header from '@/components/layout/Header';
-import Hero from '@/components/sections/Hero';
-import About from '@/components/sections/About';
-import Services from '@/components/sections/Services';
-import Projects from '@/components/sections/Projects';
-import TechStack from '@/components/sections/TechStack';
-import Process from '@/components/sections/Process';
-import Contact from '@/components/sections/Contact';
-import Footer from '@/components/layout/Footer';
+import { Navbar } from "@/components/Navbar";
+import { Hero } from "@/components/Hero";
+import { ProjectsShowcase } from "@/components/ProjectsShowcase";
+import { TechStack } from "@/components/TechStack";
+import { About } from "@/components/About";
+import { FaqSection } from "@/components/FaqSection";
+import { ContactFooter } from "@/components/ContactFooter";
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <main className="flex-1">
+    <div className="min-h-screen bg-[#09090B] text-foreground flex flex-col selection:bg-emerald-500/20 selection:text-emerald-300 overflow-x-clip">
+      {/* Fixed Editorial Header */}
+      <Navbar />
+
+      {/* Main Content Sections */}
+      <main className="flex-1 overflow-x-clip">
         <Hero />
-        <About />
-        <Services />
-        <Projects />
+        <ProjectsShowcase />
         <TechStack />
-        <Process />
-        <Contact />
+        <About />
+        <FaqSection />
       </main>
-      <Footer />
-    </>
+
+      {/* Closing Section & Minimal Footer */}
+      <ContactFooter />
+    </div>
   );
 }
