@@ -192,9 +192,9 @@ export const portfolioData: PortfolioData = {
       category: "Performance & Conversão",
       badge: "03 // PERFORMANCE",
       summary:
-        "Eliminação de gargalos de carregamento, conformidade com Core Web Vitals e gatilhos de persuasão CRO.",
+        "Eliminação de gargalos de carregamento, conformidade com métricas do Google e foco em conversão de clientes.",
       items: [
-        "LCP < 1.5s & Zero Layout Shift (CLS)",
+        "Carregamento < 1.5s & Zero Travamentos",
         "SEO Técnico & Metadados Open Graph",
         "Psicologia de Conversão (Fogg Model)",
         "Isolamento RSC Server/Client",

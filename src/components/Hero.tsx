@@ -82,7 +82,7 @@ export function Hero() {
                 100%
               </div>
               <div className="text-[11px] sm:text-xs text-zinc-400 mt-1 uppercase tracking-wider font-mono">
-                Código Limpo &amp; Tipado
+                Fluido em Celular e PC
               </div>
             </div>
             <div>
@@ -90,15 +90,15 @@ export function Hero() {
                 &lt; 1.5s
               </div>
               <div className="text-[11px] sm:text-xs text-zinc-400 mt-1 uppercase tracking-wider font-mono">
-                Meta LCP / Core Vitals
+                Carregamento Ultra-Rápido
               </div>
             </div>
             <div className="col-span-2 sm:col-span-1">
               <div className="font-mono text-xl sm:text-3xl font-bold text-white tracking-tight">
-                CRO
+                Conversão
               </div>
               <div className="text-[11px] sm:text-xs text-zinc-400 mt-1 uppercase tracking-wider font-mono">
-                Foco em Alta Conversão
+                Foco em Gerar Clientes
               </div>
             </div>
           </div>
